@@ -1,0 +1,46 @@
+# Create an analyzer so that the following query returns the sample document
+
+PUT /analyzer-test
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "myAnalyzer": {
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "porter_stem"
+          ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "show": {
+      "properties": {
+        "title": {
+          "type": "text",
+          "analyzer": "myAnalyzer"
+        }
+      }
+    }
+  }
+}
+
+# Index Sample document:
+
+PUT analyzer-test/show/1
+{
+  "title": "Bob's Burgers!!"
+}
+
+# Query:
+
+GET test/_search
+{
+  "query": {
+    "match": {
+      "title": "bobs burgers"
+    }
+  }
+}

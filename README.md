@@ -16,7 +16,7 @@ The presentation slides can be found [here](https://pages.git.realestate.com.au/
   3. Verify elasticsearch is running:`curl localhost:9200`
   4. Navigate to `http://localhost:5061` in your browser to verify that kibana is running
 
-### Manual installation (the long road)
+### Install on your machine
 
   Elasticserch:
   1. Download [elasticsearch 5.6.3](https://www.elastic.co/downloads/elasticsearch)

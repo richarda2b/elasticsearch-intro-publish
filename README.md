@@ -7,6 +7,8 @@ This is a practical introduction to elasticsearch. It contains basic examples an
 You will need couple tools to complete the practical exercises,
 choose one of the two options to set up your environment.
 
+The presentation slides can be found [here](https://pages.git.realestate.com.au/richard-alvarez/elasticsearch-intro/)
+
 ### Using docker (recommended)
 
   1. Install docker(if not already installed): [official doc](https://store.docker.com/editions/community/docker-ce-desktop-mac)

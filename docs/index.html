@@ -174,16 +174,21 @@ Create a mapping for our example movie document
 ```
 PUT movies
 {
-  "properties": {
-  "id": {
-    "type": "keyword"
-  },
-  "title": {
-    "type": "text",
-    "analyzer": "english"
-  },
-  "genres": {
-    "type": "keyword"
+  "mappings": {
+    "movie": {
+      "properties": {
+        "id": {
+          "type": "keyword"
+        },
+        "title": {
+          "type": "text",
+          "analyzer": "english"
+        },
+        "genres": {
+          "type": "keyword"
+        }
+      }
+    }
   }
 }
 ```

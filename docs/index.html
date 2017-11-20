@@ -196,7 +196,6 @@ PUT movies
 
 # Term queries
 
-- Similar to a boolean query
 - Query is not analyzed
 - A document either matches or not. No score (relevancy) is calculated
 - Use with `keyword` type values
@@ -244,7 +243,7 @@ GET articles/_search
           }
         }
       }
-    }'
+    }
   ```
 
 .footnote[[Range query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html)]

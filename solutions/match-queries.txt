@@ -30,7 +30,7 @@ GET movies/_search
   "query": {
     "match": {
       "overview": {
-        "query":"young man",
+        "query":"young mam",
         "operator": "and",
         "fuzziness": 1
       }
@@ -82,7 +82,7 @@ GET test/_search
 
 The document will still be returned. Compare the results using test/_analyze
 
-# Find movies that contains 'earth' either in the tittle or overview
+# Find movies that contains 'earth' either in the title or overview
 
 GET movies/_search
 {

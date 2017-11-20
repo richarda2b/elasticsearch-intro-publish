@@ -4,7 +4,7 @@ GET movies/_search
 {
   "query": {
     "term": {
-      "genres": "batman"
+      "overview": "batman"
     }
   }
 }
@@ -15,7 +15,7 @@ GET movies/_search
 {
   "query": {
     "terms": {
-      "genres": ["batman", "thor"]
+      "overview": ["batman", "thor"]
     }
   }
 }

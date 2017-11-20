@@ -323,7 +323,7 @@ Find the most relevant movies to the "war"
 GET movies/_search
 {
   "query": {
-    "march": {
+    "match": {
       "overview": {
         "query": "war"
       }

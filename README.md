@@ -29,4 +29,4 @@ The presentation slides can be found [here](https://pages.git.realestate.com.au/
   2. Extract it into yor prefered location
   3. Open `<extracted-location>/config/kibana.yml`
   5. Start kibana `<extracted-location>bin/kibana`
-  6. Navigate to `localhost:5061` in your browser
+  6. Navigate to `localhost:5601` in your browser

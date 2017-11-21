@@ -14,7 +14,7 @@ The presentation slides can be found [here](https://pages.git.realestate.com.au/
   1. Install docker(if not already installed): [official doc](https://store.docker.com/editions/community/docker-ce-desktop-mac)
   2. Excecute `./auto/start.sh`
   3. Verify elasticsearch is running:`curl localhost:9200`
-  4. Navigate to `http://localhost:5061` in your browser to verify that kibana is running
+  4. Navigate to `http://localhost:5601` in your browser to verify that kibana is running
 
 To stop elasticsearch just run `./auto/stop.sh`
 

@@ -16,6 +16,8 @@ The presentation slides can be found [here](https://pages.git.realestate.com.au/
   3. Verify elasticsearch is running:`curl localhost:9200`
   4. Navigate to `http://localhost:5061` in your browser to verify that kibana is running
 
+To stop elasticsearch just run `./auto/stop.sh`
+
 ### Install on your machine
 
   Elasticserch:

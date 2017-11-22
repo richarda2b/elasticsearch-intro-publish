@@ -25,11 +25,11 @@
 
       /* Two-column layout */
       .left-column {
-        width: 50%;
+        width: 48%;
         float: left;
       }
       .right-column {
-        width: 50%;
+        width: 48%;
         float: right;
       }
 
@@ -205,17 +205,31 @@ Now run `./auto/index-movies.sh` and see the dynamic mapping
 
 Query for documents that contain the word `beer`:
 
-```
-GET articles/_search
-{
-  "query": {
-    "term": {
-      "description": "beer"
+.left-column[
+  ```
+  GET articles/_search
+  {
+    "query": {
+      "term": {
+        "description": "beer"
+      }
     }
   }
-}
+  ```
+]
 
-```
+.right-column[
+  ```
+  GET articles/_search
+  {
+    "query": {
+      "terms": {
+        "description": ["beer", "rum"]
+      }
+    }
+  }
+  ```
+]
 
 .footnote[[Term query](https://www.elastic.co/guide/en/elasticsearch/reference/5.6/query-dsl-term-query.html)]
 

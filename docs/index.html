@@ -59,8 +59,8 @@ Richard Alvarez
 1. Introduction
 2. Creating indices, indexing and deleting documents
 3. Mappings
-4. Term queries
-5. Range queries
+4. Range queries
+5. Term queries
 6. Analyzers
 7. Match queries
 8. Phrase match queries
@@ -194,6 +194,33 @@ PUT movies
 ```
 
 Now run `./auto/index-movies.sh` and see the dynamic mapping
+
+---
+
+# Range queries
+
+  - Matches documents with values within the specified range
+  - Supports numeric, string, date and ip values (since v6)
+
+  ```
+    GET movies/_search
+    {
+      "query": {
+        "range": {
+          "rating": {
+            "lt": 5
+          }
+        }
+      }
+    }
+  ```
+
+.footnote[[Range query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html)]
+---
+
+# Range queries (Exercises)
+
+### Find movies with *release_date* between `2016-01-01` and `2016-12-01`
 ---
 
 # Term queries
@@ -242,32 +269,6 @@ Query for documents that contain the word `beer`:
 ### Find movies that contain 'batman' OR 'thor' in the *overview*
 ### Now only 'Batman' (note the uppercase), can you guess why no movies are returned?
 
----
-
-# Range queries
-
-  - Matches documents with values within the specified range
-  - Supports numeric, string, date and ip values (since v6)
-
-  ```
-    GET movies/_search
-    {
-      "query": {
-        "range": {
-          "rating": {
-            "lt": 5
-          }
-        }
-      }
-    }
-  ```
-
-.footnote[[Range query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html)]
----
-
-# Range queries (Exercises)
-
-### Find movies with *release_date* between `2016-01-01` and `2016-12-01`
 
 ---
 

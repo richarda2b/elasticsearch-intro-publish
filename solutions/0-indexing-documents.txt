@@ -4,7 +4,7 @@ curl -XPUT localhost:9200/movies
 
 # Index a new document
 
-curl -XPUT localhost:9200/movies/movie -d '
+curl -XPUT localhost:9200/doc/movie -d '
 {
   "id": "1",
   "title": "Spider-Man: Homecoming",
@@ -13,5 +13,5 @@ curl -XPUT localhost:9200/movies/movie -d '
 
 # Delete a document
 
-curl -XDelete localhost:9200/movies/movie/1
+curl -XDelete localhost:9200/movies/doc/1
 

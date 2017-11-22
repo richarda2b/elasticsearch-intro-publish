@@ -109,7 +109,7 @@ Create an index called movies
 Index our first document
 
 ```
-PUT movies/movie/1
+PUT movies/doc/1
 {
   "id": "1",
   "title": "Spider-Man: Homecoming",
@@ -137,7 +137,7 @@ GET movies/_search
 Delete a document
 
 ```
-DELETE movies/movie/1
+DELETE movies/doc/1
 ```
 
 Delete the index
@@ -175,7 +175,7 @@ Create a mapping for our example movie document
 PUT movies
 {
   "mappings": {
-    "movie": {
+    "doc": {
       "properties": {
         "id": {
           "type": "keyword"
@@ -192,6 +192,8 @@ PUT movies
   }
 }
 ```
+
+Now run `./auto/index-movies.sh` and see the dynamic mapping
 ---
 
 # Term queries
@@ -288,7 +290,9 @@ Create an analyzer so that the following query returns the sample document
   {
     "query": {
       "match": {
-        "title": "bobs burgers"
+        "title": {
+          "query": "bobs"
+        }
       }
     }
   }
@@ -299,7 +303,7 @@ Create an analyzer so that the following query returns the sample document
   Sample document:
 
   ```
-  PUT analyzer-test/show/1
+  PUT analyzer-test/doc/1
   {
     "title": "Bob's Burgers!!"
   }

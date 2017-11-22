@@ -16,7 +16,7 @@ PUT /analyzer-test
     }
   },
   "mappings": {
-    "show": {
+    "doc": {
       "properties": {
         "title": {
           "type": "text",
@@ -40,7 +40,7 @@ GET test/_search
 {
   "query": {
     "match": {
-      "title": "bobs burgers"
+      "title": "bobs"
     }
   }
 }

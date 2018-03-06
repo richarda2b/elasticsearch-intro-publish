@@ -21,13 +21,13 @@ To stop elasticsearch just run `./auto/stop.sh`
 ### Install on your machine
 
   Elasticserch:
-  1. Download [elasticsearch 5.6.3](https://www.elastic.co/downloads/elasticsearch)
+  1. Download [elasticsearch 6.2.2](https://www.elastic.co/downloads/past-releases/elasticsearch-6-2-2)
   2. Extract it into yor prefered location.
   3. Start elasticsearch `<extracted-location>/bin/elasticsearch`
   4. Verify that it is running: `curl localhost:9200`
 
   Kibana:
-  1. Download [kibana](https://www.elastic.co/downloads/kibana)
+  1. Download [kibana](https://www.elastic.co/downloads/past-releases/kibana-6-2-2)
   2. Extract it into yor prefered location
   3. Open `<extracted-location>/config/kibana.yml`
   5. Start kibana `<extracted-location>bin/kibana`

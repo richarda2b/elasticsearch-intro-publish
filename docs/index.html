@@ -361,6 +361,195 @@ Hint: use `operator` field
 ### Add fuzziness so 'young mam' returns the same results
 ---
 
+# Relevance
+
+- **Term frequency:** How often does the term appear in the field
+- **Inverse document frequency:** How often does each term appear in the index (all documents)
+- **Field-length norm:** How long is the field
+
+.footnote[[Relevance](https://www.elastic.co/guide/en/elasticsearch/guide/current/relevance-intro.html)]
+
+---
+
+# Relevance: Term Frequency
+
+.left-column[
+Data:
+```
+DELETE /scoring-test
+
+PUT /scoring-test
+{
+  "settings": {
+    "number_of_shards": 1
+  }
+}
+
+POST /scoring-test/foo/_bulk
+{"index":{}}
+{ "title": "Apples Apples Apples Apples"}
+{"index":{}}
+{ "title": "Apples Apples Apples Bananas"}
+{"index":{}}
+{ "title": "Apples Apples Bananas Bananas"}
+{"index":{}}
+{ "title": "Apples Bananas Bananas Bananas"}
+{"index":{}}
+{ "title": "Bananas Bananas Bananas Bananas"}
+{"index":{}}
+{ "title": "Oranges"}
+```
+]
+
+.right-column[
+Queries:
+```
+GET /scoring-test/foo/_search
+{
+  "query": {
+    "match": {
+      "title": "apples"
+    }
+  }
+}
+
+GET /scoring-test/foo/_search
+{
+  "query": {
+    "match": {
+      "title": "bananas"
+    }
+  }
+}
+```
+]
+
+---
+
+# Relevance: Inverse document frequency
+
+.left-column[
+Data:
+```
+DELETE /scoring-test
+
+PUT /scoring-test
+{
+  "settings": {
+    "number_of_shards": 1
+  }
+}
+
+POST /scoring-test/foo/_bulk
+{"index":{}}
+{ "title": "Apples"}
+{"index":{}}
+{ "title": "Apples"}
+{"index":{}}
+{ "title": "Apples"}
+{"index":{}}
+{ "title": "Bananas"}
+{"index":{}}
+{ "title": "Oranges"}
+{"index":{}}
+{ "title": "Oranges"}
+```
+]
+
+.right-column[
+Query:
+```
+GET /scoring-test/foo/_search
+{
+  "query": {
+    "match": {
+      "title": "apples bananas oranges"
+    }
+  }
+}
+```
+]
+
+---
+
+# Relevance: Field length normalisation
+
+.left-column[
+Data:
+```
+DELETE /scoring-test
+
+PUT /scoring-test
+{
+  "settings": {
+    "number_of_shards": 1
+  }
+}
+
+POST /scoring-test/foo/_bulk
+{"index":{}}
+{ "title": "The day I ate the Apples"}
+{"index":{}}
+{ "title": "Apples & Bananas"}
+```
+]
+
+.right-column[
+Query:
+```
+GET /scoring-test/foo/_search
+{
+  "query": {
+    "match": {
+      "title": "Apples"
+    }
+  }
+}
+```
+]
+
+---
+
+# Relevance: Percentage of the query terms that match
+
+.left-column[
+Data:
+```
+DELETE /scoring-test
+
+PUT /scoring-test
+{
+  "settings": {
+    "number_of_shards": 1
+  }
+}
+
+POST /scoring-test/foo/_bulk
+{"index":{}}
+{ "title": "Apples Oranges"}
+{"index":{}}
+{ "title": "Apples Bananas"}
+{"index":{}}
+{ "title": "Bananas Oranges"}
+```
+]
+
+.right-column[
+Query:
+```
+GET /scoring-test/foo/_search
+{
+  "query": {
+    "match": {
+      "title": "Apples Bananas"
+    }
+  }
+}
+```
+]
+
+---
+
 # Phrase-match queries
 
 - Analyses the requested value

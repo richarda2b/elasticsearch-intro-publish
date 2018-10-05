@@ -198,6 +198,73 @@ Now run `./auto/index-movies.sh` and see the dynamic mapping
 
 ---
 
+`GET movies/_mapping`
+
+.left-column[
+```
+{
+  "movies": {
+    "mappings": {
+      "movie": {
+        "properties": {
+          "genres": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "id": {
+            "type": "long"
+          },
+          "overview": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "rating": {
+            "type": "float"
+          },
+...
+```
+]
+
+.right-column[
+```
+          "release_date": {
+            "type": "date"
+          }
+          "title": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+]
+
+---
+
+class: center, middle
+
+Queries
+
+---
+
 # Range queries
 
   - Matches documents with values within the specified range
@@ -226,9 +293,9 @@ Now run `./auto/index-movies.sh` and see the dynamic mapping
 
 # Term queries
 
-- Query is not analyzed
+- Matches on the **exact** term
 - A document either matches or not. No score (relevancy) is calculated
-- Use with `keyword` type values
+- Commonly used on `keyword` type fields
 - Useful for searching: names, ids, discrete values (e.g movie genres)
 
 Query for documents that contain the word `beer`:
@@ -259,7 +326,7 @@ Query for documents that contain the word `beer`:
   ```
 ]
 
-.footnote[[Term query](https://www.elastic.co/guide/en/elasticsearch/reference/5.6/query-dsl-term-query.html)]
+.footnote[[Term query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html)]
 
 ---
 
@@ -275,7 +342,7 @@ Query for documents that contain the word `beer`:
 
 # Analyzers
 
-- Specifies how the text will be processed before being added to the inverted index (eg. tokenised, stemming, stop word removal)
+- Specifies how the text will be processed before being added to the inverted index (eg. tokenised, lowercased, stemming, stop word removal, etc)
 - Elasticsearch has several [built-in analyzers](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-analyzers.html)
 - Specified in the mapping
 - Supports custom analysers

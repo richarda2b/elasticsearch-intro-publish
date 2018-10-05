@@ -1,26 +1,14 @@
-# Create an analyzer so that the following query returns the sample document
+# Create an index with analyzer
 
+DELETE analyzer-test
 PUT /analyzer-test
 {
-  "settings": {
-    "analysis": {
-      "analyzer": {
-        "myAnalyzer": {
-          "tokenizer": "standard",
-          "filter": [
-            "lowercase",
-            "porter_stem"
-          ]
-        }
-      }
-    }
-  },
   "mappings": {
     "doc": {
       "properties": {
         "title": {
           "type": "text",
-          "analyzer": "myAnalyzer"
+          "analyzer": "english"
         }
       }
     }
@@ -29,18 +17,19 @@ PUT /analyzer-test
 
 # Index Sample document:
 
-PUT analyzer-test/show/1
+PUT analyzer-test/doc/1
 {
   "title": "Bob's Burgers!!"
 }
 
 # Query:
 
-GET test/_search
+GET analyzer-test/_search
 {
   "query": {
     "match": {
-      "title": "bobs"
+      "title": "bobs burgers"
     }
   }
 }
+

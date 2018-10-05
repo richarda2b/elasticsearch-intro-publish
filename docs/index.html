@@ -353,6 +353,27 @@ You can use the `/_analyze` endpoint to test analyzers
 
 ---
 
+# Analyzers (in Mapping)
+
+```
+PUT /some-index
+{
+  "mappings": {
+    "doc": {
+      "properties": {
+        "myField": {
+          "type": "text",
+          "analyzer": "whitespace"
+        }
+      }
+    }
+  }
+}
+
+```
+
+---
+
 # Analyzers (Exercises)
 Try the 'standard', 'whitespace'and 'english' analyzers with:
 ```
@@ -363,7 +384,7 @@ GET /_analyze
 }
 ```
 
-Create an analyzer so that the following query returns the sample document
+Create an with an analyzer so that the following query returns the sample document
 
 .left-column[
   Query:
@@ -374,7 +395,7 @@ Create an analyzer so that the following query returns the sample document
     "query": {
       "match": {
         "title": {
-          "query": "bobs"
+          "query": "bobs burgers"
         }
       }
     }

@@ -674,25 +674,51 @@ Possible contexts:
 
 # Bool queries (Example)
 
-```
-GET movies/_search
-{
-  "query": {
-    "bool": {
-      "must": {
-        "match": {
-          "title": "thor"
-        }
-      },
-      "must_not": {
-        "match": {
-          "title": "ragnarok"
+.left-column[
+Should will act filter:
+  ```
+  GET movies/_search
+  {
+    "query": {
+      "bool": {
+        "should": {
+          "match": {
+            "title": "thor"
+          }
         }
       }
     }
   }
-}
-```
+  ```
+]
+
+.right-column[
+Should will influence the score:
+  ```
+  GET movies/_search
+  {
+    "query": {
+      "bool": {
+        "must": {
+          "match": {
+            "title": "thor"
+          }
+        },
+        "should": {
+          "match_phrase": {
+            "title": "Dark World"
+          }
+        }
+        "must_not": {
+          "match": {
+            "title": "ragnarok"
+          }
+        }
+      }
+    }
+  }
+  ```
+]
 ---
 
 # Bool queries (Exercises)

@@ -384,7 +384,7 @@ GET /_analyze
 }
 ```
 
-Create an with an analyzer so that the following query returns the sample document
+Create an analyzer so that the following query returns the sample document
 
 .left-column[
   Query:
@@ -454,7 +454,9 @@ Hint: use `operator` field
 
 - **Term frequency:** How often does the term appear in the field
 - **Inverse document frequency:** How often does each term appear in the index (all documents)
-- **Field-length norm:** How long is the field
+- **Field-length norm:** How long the field is
+- **Percentage of the query terms that match**
+
 
 .footnote[[Relevance](https://www.elastic.co/guide/en/elasticsearch/guide/current/relevance-intro.html)]
 

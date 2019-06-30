@@ -110,7 +110,7 @@ Create an index called movies
 Index our first document
 
 ```
-PUT movies/doc/1
+PUT movies/_doc/1
 {
   "id": "1",
   "title": "Spider-Man: Homecoming",
@@ -138,7 +138,7 @@ GET movies/_search
 Delete a document
 
 ```
-DELETE movies/doc/1
+DELETE movies/_doc/1
 ```
 
 Delete the index
@@ -176,18 +176,16 @@ Create a mapping for our example movie document
 PUT movies
 {
   "mappings": {
-    "doc": {
-      "properties": {
-        "id": {
-          "type": "keyword"
-        },
-        "title": {
-          "type": "text",
-          "analyzer": "english"
-        },
-        "genres": {
-          "type": "keyword"
-        }
+    "properties": {
+      "id": {
+        "type": "keyword"
+      },
+      "title": {
+        "type": "text",
+        "analyzer": "english"
+      },
+      "genres": {
+        "type": "keyword"
       }
     }
   }
@@ -203,50 +201,48 @@ Now run `./auto/index-movies.sh` and see the dynamic mapping
 .left-column[
 ```
 {
-  "movies": {
-    "mappings": {
-      "movie": {
-        "properties": {
-          "genres": {
-            "type": "text",
-            "fields": {
-              "keyword": {
-                "type": "keyword",
-                "ignore_above": 256
-              }
+  "movies" : {
+    "mappings" : {
+      "properties" : {
+        "genres" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
             }
-          },
-          "id": {
-            "type": "long"
-          },
-          "overview": {
-            "type": "text",
-            "fields": {
-              "keyword": {
-                "type": "keyword",
-                "ignore_above": 256
-              }
+          }
+        },
+        "id" : {
+          "type" : "long"
+        },
+        "overview" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
             }
-          },
-          "rating": {
-            "type": "float"
-          },
+          }
+        },
+        "rating" : {
+          "type" : "float"
+        },
 ...
 ```
 ]
 
 .right-column[
 ```
-          "release_date": {
-            "type": "date"
-          }
-          "title": {
-            "type": "text",
-            "fields": {
-              "keyword": {
-                "type": "keyword",
-                "ignore_above": 256
-              }
+        "release_date" : {
+          "type" : "date"
+        },
+        "title" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
             }
           }
         }
@@ -359,17 +355,14 @@ You can use the `/_analyze` endpoint to test analyzers
 PUT /some-index
 {
   "mappings": {
-    "doc": {
-      "properties": {
-        "myField": {
-          "type": "text",
-          "analyzer": "whitespace"
-        }
+    "properties": {
+      "myField": {
+        "type": "text",
+        "analyzer": "whitespace"
       }
     }
   }
 }
-
 ```
 
 ---
@@ -407,7 +400,7 @@ Create an analyzer so that the following query returns the sample document
   Sample document:
 
   ```
-  PUT analyzer-test/doc/1
+  PUT analyzer-test/_doc/1
   {
     "title": "Bob's Burgers!!"
   }
@@ -476,7 +469,7 @@ PUT /scoring-test
   }
 }
 
-POST /scoring-test/foo/_bulk
+POST /scoring-test/_bulk
 {"index":{}}
 { "title": "Apples Apples Apples Apples"}
 {"index":{}}
@@ -495,7 +488,7 @@ POST /scoring-test/foo/_bulk
 .right-column[
 Queries:
 ```
-GET /scoring-test/foo/_search
+GET /scoring-test/_search
 {
   "query": {
     "match": {
@@ -504,7 +497,7 @@ GET /scoring-test/foo/_search
   }
 }
 
-GET /scoring-test/foo/_search
+GET /scoring-test/_search
 {
   "query": {
     "match": {
@@ -531,7 +524,7 @@ PUT /scoring-test
   }
 }
 
-POST /scoring-test/foo/_bulk
+POST /scoring-test/_bulk
 {"index":{}}
 { "title": "Apples"}
 {"index":{}}
@@ -550,7 +543,7 @@ POST /scoring-test/foo/_bulk
 .right-column[
 Query:
 ```
-GET /scoring-test/foo/_search
+GET /scoring-test/_search
 {
   "query": {
     "match": {
@@ -577,7 +570,7 @@ PUT /scoring-test
   }
 }
 
-POST /scoring-test/foo/_bulk
+POST /scoring-test/_bulk
 {"index":{}}
 { "title": "The day I ate the Apples"}
 {"index":{}}
@@ -588,7 +581,7 @@ POST /scoring-test/foo/_bulk
 .right-column[
 Query:
 ```
-GET /scoring-test/foo/_search
+GET /scoring-test/_search
 {
   "query": {
     "match": {
@@ -615,7 +608,7 @@ PUT /scoring-test
   }
 }
 
-POST /scoring-test/foo/_bulk
+POST /scoring-test/_bulk
 {"index":{}}
 { "title": "Apples Oranges"}
 {"index":{}}
@@ -628,7 +621,7 @@ POST /scoring-test/foo/_bulk
 .right-column[
 Query:
 ```
-GET /scoring-test/foo/_search
+GET /scoring-test/_search
 {
   "query": {
     "match": {
@@ -710,7 +703,7 @@ Should will influence the score:
           "match_phrase": {
             "title": "Dark World"
           }
-        }
+        },
         "must_not": {
           "match": {
             "title": "ragnarok"

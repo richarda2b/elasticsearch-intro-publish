@@ -4,7 +4,7 @@ curl -XPUT localhost:9200/movies
 
 # Index a new document
 
-curl -XPUT localhost:9200/doc/movie -d '
+curl -XPUT -H "Content-Type: application/json" localhost:9200/movies/_doc/1 -d '
 {
   "id": "1",
   "title": "Spider-Man: Homecoming",

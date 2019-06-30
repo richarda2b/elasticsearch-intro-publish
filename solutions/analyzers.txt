@@ -4,12 +4,10 @@ DELETE analyzer-test
 PUT /analyzer-test
 {
   "mappings": {
-    "doc": {
-      "properties": {
-        "title": {
-          "type": "text",
-          "analyzer": "english"
-        }
+    "properties": {
+      "title": {
+        "type": "text",
+        "analyzer": "english"
       }
     }
   }
@@ -17,7 +15,7 @@ PUT /analyzer-test
 
 # Index Sample document:
 
-PUT analyzer-test/doc/1
+PUT analyzer-test/_doc/1
 {
   "title": "Bob's Burgers!!"
 }

@@ -22,7 +22,7 @@ To stop elasticsearch just run `./auto/stop.sh`
 
 If you choose not to follow the recommended installation.
 
-  1. Find version [6.4.2](https://www.elastic.co/downloads/past-releases) for Elasticsearch and Kibana
+  1. Find version [7.2.0](https://www.elastic.co/downloads/past-releases) for Elasticsearch and Kibana
   2. Follow the installation instructions
     - [Elasticserch](https://www.elastic.co/downloads/elasticsearch)
     - [Kibana](https://www.elastic.co/downloads/kibana)
